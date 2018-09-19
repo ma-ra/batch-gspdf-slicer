@@ -1,5 +1,9 @@
+@echo off
+
 SET gswin="c:\Program Files\gs\gs9.23\bin\gswin64.exe"
 SET pdfreader="c:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe"
+SET source=%1
+SET output=%source:~0,-5%-zebra.pdf"
 
 REM ###############
 REM ### notes
@@ -8,6 +12,15 @@ REM ###############
 REM /CropBox [0 0 514 197] - left, bottom, right, top
 REM /BeginPage{1 1 scale -43 -228 translate} - scale x, scale y, move x, move y
 REM MediaBox [0 0 595 842] - 842x595 pkt is A4 size; 72 pkt is 1 cal; Label 10x15 cm is 283x425 pkt
+
+REM ###############
+REM ### folders
+REM ###############
+
+if not exist run0 mkdir run0
+del run0\*.pdf
+if not exist output mkdir output
+copy /V /Y %source% run0\source.pdf
 
 REM ###############
 REM ### slice
@@ -23,7 +36,7 @@ REM 1
     -c "[/CropBox [0 0 514 197]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -43 -625 translate}>> setpagedevice" ^
-    -f source.pdf
+    -f run0\source.pdf
 
 REM 2
 %gswin% ^
@@ -32,7 +45,7 @@ REM 2
 	-c "[/CropBox [0 0 514 197]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -43 -426 translate}>> setpagedevice" ^
-    -f source.pdf
+    -f run0\source.pdf
 	
 REM 3
 %gswin% ^
@@ -41,7 +54,7 @@ REM 3
 	-c "[/CropBox [0 0 514 197]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -43 -228 translate}>> setpagedevice" ^
-    -f source.pdf
+    -f run0\source.pdf
 	
 REM 4
 %gswin% ^
@@ -50,7 +63,7 @@ REM 4
 	-c "[/CropBox [0 0 514 197]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -43 -28 translate}>> setpagedevice" ^
-    -f source.pdf
+    -f run0\source.pdf
 
 REM ###############	
 REM ### split - removes content from outside of the CropBox	!!!
@@ -111,15 +124,16 @@ del run4\*.pdf
 gsar -s"/CropBox [0 0 514.0 197.0]" -r -f run3\merge.pdf run4\gsar.pdf
 	
 %gswin% ^
-    -o "output.pdf" ^
+    -o "run0\output.pdf" ^
 	-sDEVICE=pdfwrite ^
 	-dDEVICEWIDTHPOINTS=425 ^
 	-dDEVICEHEIGHTPOINTS=283 ^
 	-dFIXEDMEDIA ^
 	-c "<</BeginPage{0.83 1 scale -1 43 translate}>> setpagedevice" ^
     -f "run4\gsar.pdf"
-	
-%pdfreader% output.pdf
+
+copy /V /Y "run0\output.pdf" output\%output%	
+REM %pdfreader% output.pdf
 
 
 
