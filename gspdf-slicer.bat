@@ -33,52 +33,25 @@ REM 1
 %gswin% ^
     -o "run1\1.pdf" ^
     -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 515 140]" ^
+    -c "[/CropBox [0 0 515 280]" ^
     -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -713 translate}>> setpagedevice" ^
+	-c "<</BeginPage{1 1 scale -10 -575 translate}>> setpagedevice" ^
     -f run0\source.pdf
-
+	
 REM 2
 %gswin% ^
     -o "run1\2.pdf" ^
     -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 515 140]" ^
+    -c "[/CropBox [0 0 515 280]" ^
     -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -572 translate}>> setpagedevice" ^
+	-c "<</BeginPage{1 1 scale -10 -295 translate}>> setpagedevice" ^
     -f run0\source.pdf
 
 REM 3
 %gswin% ^
     -o "run1\3.pdf" ^
     -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 515 140]" ^
-    -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -432 translate}>> setpagedevice" ^
-    -f run0\source.pdf
-	
-REM 4
-%gswin% ^
-    -o "run1\4.pdf" ^
-    -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 515 140]" ^
-    -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -292 translate}>> setpagedevice" ^
-    -f run0\source.pdf
-	
-REM 5
-%gswin% ^
-    -o "run1\5.pdf" ^
-    -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 515 140]" ^
-    -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -153 translate}>> setpagedevice" ^
-    -f run0\source.pdf
-	
-REM 6
-%gswin% ^
-    -o "run1\6.pdf" ^
-    -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 515 140]" ^
+    -c "[/CropBox [0 0 515 280]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -10 -15 translate}>> setpagedevice" ^
     -f run0\source.pdf
@@ -110,27 +83,6 @@ REM 3
 	-dSAFER ^
 	-o run2\%%.4d.3.pdf ^
 	-f run1\3.pdf
-	
-REM 4
-%gswin% ^
-	-sDEVICE=pdfwrite ^
-	-dSAFER ^
-	-o run2\%%.4d.4.pdf ^
-	-f run1\4.pdf
-	
-REM 5
-%gswin% ^
-	-sDEVICE=pdfwrite ^
-	-dSAFER ^
-	-o run2\%%.4d.5.pdf ^
-	-f run1\5.pdf
-	
-REM 4
-%gswin% ^
-	-sDEVICE=pdfwrite ^
-	-dSAFER ^
-	-o run2\%%.4d.6.pdf ^
-	-f run1\6.pdf
 
 for %%s in (run2\*.pdf) do ECHO %%s >> run2\merge.lst
 
@@ -153,7 +105,7 @@ REM ###############
 if not exist run4 mkdir run4
 del run4\*.pdf
 
-gsar -s"/CropBox [0 0 515.0 140.0]" -r -f run3\merge.pdf run4\gsar.pdf
+gsar -s"/CropBox [0 0 515.0 280.0]" -r -f run3\merge.pdf run4\gsar.pdf
 	
 %gswin% ^
     -o "run0\output.pdf" ^
@@ -161,7 +113,7 @@ gsar -s"/CropBox [0 0 515.0 140.0]" -r -f run3\merge.pdf run4\gsar.pdf
 	-dDEVICEWIDTHPOINTS=425 ^
 	-dDEVICEHEIGHTPOINTS=283 ^
 	-dFIXEDMEDIA ^
-	-c "<</BeginPage{0.82 1 scale 0 60 translate}>> setpagedevice" ^
+	-c "<</BeginPage{0.82 1 scale 0 5 translate}>> setpagedevice" ^
     -f "run4\gsar.pdf"
 
 copy /V /Y "run0\output.pdf" output\%output%	
