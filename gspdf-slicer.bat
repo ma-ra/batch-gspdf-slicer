@@ -20,7 +20,13 @@ REM ###############
 if not exist run0 mkdir run0
 del run0\*.pdf
 if not exist output mkdir output
-copy /V /Y %source% run0\source.pdf
+
+REM ###############
+REM ### remove current cropbox
+REM ###############
+
+gsar.exe -s"/CropBox 4 0 R" -r -f %source% run0\source.pdf
+if not exist run0\source.pdf copy /V /Y %source% run0\source.pdf
 
 REM ###############
 REM ### slice
@@ -121,7 +127,7 @@ REM ###############
 if not exist run4 mkdir run4
 del run4\*.pdf
 
-gsar -s"/CropBox [0 0 514.0 197.0]" -r -f run3\merge.pdf run4\gsar.pdf
+gsar.exe -s"/CropBox [0 0 514.0 197.0]" -r -f run3\merge.pdf run4\gsar.pdf
 	
 %gswin% ^
     -o "run0\output.pdf" ^
