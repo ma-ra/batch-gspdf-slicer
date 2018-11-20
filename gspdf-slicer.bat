@@ -35,7 +35,7 @@ REM 1
     -sDEVICE=pdfwrite ^
     -c "[/CropBox [0 0 560 140]" ^
     -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -713 translate}>> setpagedevice" ^
+	-c "<</BeginPage{1 1 scale -10 -715 translate}>> setpagedevice" ^
     -f run0\source.pdf
 
 REM 2
@@ -44,7 +44,7 @@ REM 2
     -sDEVICE=pdfwrite ^
     -c "[/CropBox [0 0 560 140]" ^
     -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -572 translate}>> setpagedevice" ^
+	-c "<</BeginPage{1 1 scale -10 -569 translate}>> setpagedevice" ^
     -f run0\source.pdf
 
 REM 3
@@ -53,7 +53,7 @@ REM 3
     -sDEVICE=pdfwrite ^
     -c "[/CropBox [0 0 560 140]" ^
     -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -432 translate}>> setpagedevice" ^
+	-c "<</BeginPage{1 1 scale -10 -423 translate}>> setpagedevice" ^
     -f run0\source.pdf
 	
 REM 4
@@ -62,7 +62,7 @@ REM 4
     -sDEVICE=pdfwrite ^
     -c "[/CropBox [0 0 560 140]" ^
     -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -292 translate}>> setpagedevice" ^
+	-c "<</BeginPage{1 1 scale -10 -277 translate}>> setpagedevice" ^
     -f run0\source.pdf
 	
 REM 5
@@ -71,7 +71,7 @@ REM 5
     -sDEVICE=pdfwrite ^
     -c "[/CropBox [0 0 560 140]" ^
     -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -153 translate}>> setpagedevice" ^
+	-c "<</BeginPage{1 1 scale -10 -131 translate}>> setpagedevice" ^
     -f run0\source.pdf
 	
 REM 6
@@ -80,8 +80,11 @@ REM 6
     -sDEVICE=pdfwrite ^
     -c "[/CropBox [0 0 560 140]" ^
     -c " /PAGES pdfmark" ^
-	-c "<</BeginPage{1 1 scale -10 -15 translate}>> setpagedevice" ^
+	-c "<</BeginPage{1 1 scale -10 15 translate}>> setpagedevice" ^
     -f run0\source.pdf
+	
+REM %pdfreader% "run1\1.pdf" "run1\2.pdf" "run1\3.pdf" "run1\4.pdf" "run1\5.pdf" "run1\6.pdf"
+REM exit /B
 
 REM ###############	
 REM ### split - removes content from outside of the CropBox	!!!
@@ -161,7 +164,7 @@ gsar -s"/CropBox [0 0 560.0 140.0]" -r -f run3\merge.pdf run4\gsar.pdf
 	-dDEVICEWIDTHPOINTS=425 ^
 	-dDEVICEHEIGHTPOINTS=283 ^
 	-dFIXEDMEDIA ^
-	-c "<</BeginPage{0.75 1 scale 0 60 translate}>> setpagedevice" ^
+	-c "<</BeginPage{0.83 1 scale 0 60 translate}>> setpagedevice" ^
     -f "run4\gsar.pdf"
 
 copy /V /Y "run0\output.pdf" output\%output%	
