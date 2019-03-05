@@ -33,7 +33,7 @@ REM 1
 %gswin% ^
     -o "run1\1.pdf" ^
     -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 560 140]" ^
+    -c "[/CropBox [0 0 562 140]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -10 -715 translate}>> setpagedevice" ^
     -f run0\source.pdf
@@ -42,7 +42,7 @@ REM 2
 %gswin% ^
     -o "run1\2.pdf" ^
     -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 560 140]" ^
+    -c "[/CropBox [0 0 562 140]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -10 -569 translate}>> setpagedevice" ^
     -f run0\source.pdf
@@ -51,7 +51,7 @@ REM 3
 %gswin% ^
     -o "run1\3.pdf" ^
     -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 560 140]" ^
+    -c "[/CropBox [0 0 562 140]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -10 -423 translate}>> setpagedevice" ^
     -f run0\source.pdf
@@ -60,7 +60,7 @@ REM 4
 %gswin% ^
     -o "run1\4.pdf" ^
     -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 560 140]" ^
+    -c "[/CropBox [0 0 562 140]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -10 -277 translate}>> setpagedevice" ^
     -f run0\source.pdf
@@ -69,7 +69,7 @@ REM 5
 %gswin% ^
     -o "run1\5.pdf" ^
     -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 560 140]" ^
+    -c "[/CropBox [0 0 562 140]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -10 -131 translate}>> setpagedevice" ^
     -f run0\source.pdf
@@ -78,7 +78,7 @@ REM 6
 %gswin% ^
     -o "run1\6.pdf" ^
     -sDEVICE=pdfwrite ^
-    -c "[/CropBox [0 0 560 140]" ^
+    -c "[/CropBox [0 0 562 140]" ^
     -c " /PAGES pdfmark" ^
 	-c "<</BeginPage{1 1 scale -10 15 translate}>> setpagedevice" ^
     -f run0\source.pdf
@@ -156,7 +156,7 @@ REM ###############
 if not exist run4 mkdir run4
 del run4\*.pdf
 
-gsar -s"/CropBox [0 0 560.0 140.0]" -r -f run3\merge.pdf run4\gsar.pdf
+gsar -s"/CropBox [0 0 562.0 140.0]" -r -f run3\merge.pdf run4\gsar.pdf
 	
 %gswin% ^
     -o "run0\output.pdf" ^
@@ -164,7 +164,7 @@ gsar -s"/CropBox [0 0 560.0 140.0]" -r -f run3\merge.pdf run4\gsar.pdf
 	-dDEVICEWIDTHPOINTS=425 ^
 	-dDEVICEHEIGHTPOINTS=283 ^
 	-dFIXEDMEDIA ^
-	-c "<</BeginPage{0.83 1 scale 0 60 translate}>> setpagedevice" ^
+	-c "<</BeginPage{0.75 1 scale 0 60 translate}>> setpagedevice" ^
     -f "run4\gsar.pdf"
 
 copy /V /Y "run0\output.pdf" output\%output%	
